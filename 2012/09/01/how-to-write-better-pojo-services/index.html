@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>How to write better POJO Services | Zemian&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="In Java, you can easily implement some business logic in Plain Old Java Object (POJO) classes, and then able to run them in a fancy
+server or framework without much hassle. There many server/framework ...">
+    
+    <link rel="preload" href="/assets/css/0.styles.89986362.css" as="style"><link rel="preload" href="/assets/js/app.d0768de5.js" as="script"><link rel="preload" href="/assets/js/6.3d83d077.js" as="script"><link rel="preload" href="/assets/js/3.bf04938e.js" as="script"><link rel="preload" href="/assets/js/62.6d7351ab.js" as="script"><link rel="prefetch" href="/assets/js/10.0b5be35e.js"><link rel="prefetch" href="/assets/js/100.fc1682f8.js"><link rel="prefetch" href="/assets/js/101.3a69ca49.js"><link rel="prefetch" href="/assets/js/102.a198bbcb.js"><link rel="prefetch" href="/assets/js/103.126eded0.js"><link rel="prefetch" href="/assets/js/104.6e4591c7.js"><link rel="prefetch" href="/assets/js/105.a09a9203.js"><link rel="prefetch" href="/assets/js/106.188001b0.js"><link rel="prefetch" href="/assets/js/107.4661f92e.js"><link rel="prefetch" href="/assets/js/108.fa87a28d.js"><link rel="prefetch" href="/assets/js/109.2688c3bc.js"><link rel="prefetch" href="/assets/js/11.5d912eaa.js"><link rel="prefetch" href="/assets/js/110.f3de5c1c.js"><link rel="prefetch" href="/assets/js/111.cbce13b6.js"><link rel="prefetch" href="/assets/js/112.7d0fbc41.js"><link rel="prefetch" href="/assets/js/113.45bee3c9.js"><link rel="prefetch" href="/assets/js/114.5685c9b0.js"><link rel="prefetch" href="/assets/js/115.43137d39.js"><link rel="prefetch" href="/assets/js/116.4310733a.js"><link rel="prefetch" href="/assets/js/117.70f1356e.js"><link rel="prefetch" href="/assets/js/118.0f6d6499.js"><link rel="prefetch" href="/assets/js/119.c4db4fe2.js"><link rel="prefetch" href="/assets/js/12.666bc5b1.js"><link rel="prefetch" href="/assets/js/120.894be9d3.js"><link rel="prefetch" href="/assets/js/121.84cea281.js"><link rel="prefetch" href="/assets/js/122.9dc6a33c.js"><link rel="prefetch" href="/assets/js/123.3912c7fb.js"><link rel="prefetch" href="/assets/js/124.fa5b79df.js"><link rel="prefetch" href="/assets/js/125.1643112e.js"><link rel="prefetch" href="/assets/js/126.2a34bf83.js"><link rel="prefetch" href="/assets/js/127.817312bd.js"><link rel="prefetch" href="/assets/js/128.b8791e8d.js"><link rel="prefetch" href="/assets/js/129.ee3ebdda.js"><link rel="prefetch" href="/assets/js/13.3f9b2a48.js"><link rel="prefetch" href="/assets/js/130.1aae2583.js"><link rel="prefetch" href="/assets/js/131.8af18e98.js"><link rel="prefetch" href="/assets/js/132.8dada434.js"><link rel="prefetch" href="/assets/js/133.7ace3794.js"><link rel="prefetch" href="/assets/js/134.94463269.js"><link rel="prefetch" href="/assets/js/135.6dd7630a.js"><link rel="prefetch" href="/assets/js/136.3281c4c6.js"><link rel="prefetch" href="/assets/js/137.b730d000.js"><link rel="prefetch" href="/assets/js/138.d14addb6.js"><link rel="prefetch" href="/assets/js/139.84e5c264.js"><link rel="prefetch" href="/assets/js/14.9e56c2c8.js"><link rel="prefetch" href="/assets/js/140.0330e840.js"><link rel="prefetch" href="/assets/js/141.06fb8ee1.js"><link rel="prefetch" href="/assets/js/142.455102e4.js"><link rel="prefetch" href="/assets/js/143.af58acb4.js"><link rel="prefetch" href="/assets/js/144.bde3d5aa.js"><link rel="prefetch" href="/assets/js/145.89e60e7e.js"><link rel="prefetch" href="/assets/js/146.42f98bfe.js"><link rel="prefetch" href="/assets/js/147.2bfc9157.js"><link rel="prefetch" href="/assets/js/148.304a6bd9.js"><link rel="prefetch" href="/assets/js/149.cd37bd10.js"><link rel="prefetch" href="/assets/js/15.18adc38e.js"><link rel="prefetch" href="/assets/js/150.d0b82a9d.js"><link rel="prefetch" href="/assets/js/151.eb504fe4.js"><link rel="prefetch" href="/assets/js/152.904a71fe.js"><link rel="prefetch" href="/assets/js/153.0c722c10.js"><link rel="prefetch" href="/assets/js/154.97188ee7.js"><link rel="prefetch" href="/assets/js/155.db1425ea.js"><link rel="prefetch" href="/assets/js/156.a2167ba9.js"><link rel="prefetch" href="/assets/js/157.48689b04.js"><link rel="prefetch" href="/assets/js/158.d2221b14.js"><link rel="prefetch" href="/assets/js/159.beb55d16.js"><link rel="prefetch" href="/assets/js/16.9af2362e.js"><link rel="prefetch" href="/assets/js/160.434260a9.js"><link rel="prefetch" href="/assets/js/161.092928d8.js"><link rel="prefetch" href="/assets/js/162.ac171b87.js"><link rel="prefetch" href="/assets/js/163.aed5fe24.js"><link rel="prefetch" href="/assets/js/164.ca54fee0.js"><link rel="prefetch" href="/assets/js/165.2471cbdf.js"><link rel="prefetch" href="/assets/js/166.e511d406.js"><link rel="prefetch" href="/assets/js/167.0b3dc2e0.js"><link rel="prefetch" href="/assets/js/168.36ab4f02.js"><link rel="prefetch" href="/assets/js/169.60c4127a.js"><link rel="prefetch" href="/assets/js/17.f132fdf8.js"><link rel="prefetch" href="/assets/js/170.b54dba09.js"><link rel="prefetch" href="/assets/js/171.8b2028f1.js"><link rel="prefetch" href="/assets/js/172.351b99e6.js"><link rel="prefetch" href="/assets/js/173.46509703.js"><link rel="prefetch" href="/assets/js/174.715a9a9b.js"><link rel="prefetch" href="/assets/js/175.c1d4128b.js"><link rel="prefetch" href="/assets/js/176.47189e66.js"><link rel="prefetch" href="/assets/js/177.34986abf.js"><link rel="prefetch" href="/assets/js/178.eb06e5b3.js"><link rel="prefetch" href="/assets/js/179.997fcb9d.js"><link rel="prefetch" href="/assets/js/18.abbf8b12.js"><link rel="prefetch" href="/assets/js/180.f5be1723.js"><link rel="prefetch" href="/assets/js/181.23f76fe5.js"><link rel="prefetch" href="/assets/js/182.8dcf41ce.js"><link rel="prefetch" href="/assets/js/183.7576f34f.js"><link rel="prefetch" href="/assets/js/184.9a85cd41.js"><link rel="prefetch" href="/assets/js/185.da2e1e11.js"><link rel="prefetch" href="/assets/js/186.96e14c0c.js"><link rel="prefetch" href="/assets/js/187.a7f1fd83.js"><link rel="prefetch" href="/assets/js/188.374ca74a.js"><link rel="prefetch" href="/assets/js/189.4e54c55d.js"><link rel="prefetch" href="/assets/js/19.ad6af1fb.js"><link rel="prefetch" href="/assets/js/190.66847246.js"><link rel="prefetch" href="/assets/js/191.07a7c0bb.js"><link rel="prefetch" href="/assets/js/192.7f74fd19.js"><link rel="prefetch" href="/assets/js/193.0500ff9e.js"><link rel="prefetch" href="/assets/js/194.d451365b.js"><link rel="prefetch" href="/assets/js/195.a0e34a35.js"><link rel="prefetch" href="/assets/js/196.d65d146f.js"><link rel="prefetch" href="/assets/js/197.58ad7a49.js"><link rel="prefetch" href="/assets/js/198.c6defcae.js"><link rel="prefetch" href="/assets/js/199.caf39db3.js"><link rel="prefetch" href="/assets/js/20.1c589aae.js"><link rel="prefetch" href="/assets/js/200.4ea4bd3c.js"><link rel="prefetch" href="/assets/js/201.1fc70d28.js"><link rel="prefetch" href="/assets/js/202.59b532b1.js"><link rel="prefetch" href="/assets/js/203.5497ed7f.js"><link rel="prefetch" href="/assets/js/204.ce3d2fca.js"><link rel="prefetch" href="/assets/js/205.777d666b.js"><link rel="prefetch" href="/assets/js/206.f0bd32de.js"><link rel="prefetch" href="/assets/js/207.55b4e54c.js"><link rel="prefetch" href="/assets/js/208.a77a414f.js"><link rel="prefetch" href="/assets/js/209.e9e0d12e.js"><link rel="prefetch" href="/assets/js/21.3991a2dc.js"><link rel="prefetch" href="/assets/js/210.278a6a5f.js"><link rel="prefetch" href="/assets/js/211.6f97b631.js"><link rel="prefetch" href="/assets/js/212.e02e98fc.js"><link rel="prefetch" href="/assets/js/213.3be2e1ae.js"><link rel="prefetch" href="/assets/js/214.a468e230.js"><link rel="prefetch" href="/assets/js/215.32d38fc9.js"><link rel="prefetch" href="/assets/js/216.8c245bde.js"><link rel="prefetch" href="/assets/js/217.994c54e5.js"><link rel="prefetch" href="/assets/js/218.090c9418.js"><link rel="prefetch" href="/assets/js/219.c547e1d0.js"><link rel="prefetch" href="/assets/js/22.b26ef736.js"><link rel="prefetch" href="/assets/js/220.fc52cdb8.js"><link rel="prefetch" href="/assets/js/221.5787451f.js"><link rel="prefetch" href="/assets/js/222.ba7d1230.js"><link rel="prefetch" href="/assets/js/223.eb8a1097.js"><link rel="prefetch" href="/assets/js/224.e4d611a1.js"><link rel="prefetch" href="/assets/js/225.c64a6af3.js"><link rel="prefetch" href="/assets/js/226.4710d884.js"><link rel="prefetch" href="/assets/js/227.4876c7c9.js"><link rel="prefetch" href="/assets/js/228.17697187.js"><link rel="prefetch" href="/assets/js/229.a21ccd95.js"><link rel="prefetch" href="/assets/js/23.c8df1771.js"><link rel="prefetch" href="/assets/js/230.98a097b5.js"><link rel="prefetch" href="/assets/js/231.294ff923.js"><link rel="prefetch" href="/assets/js/232.f646e6f7.js"><link rel="prefetch" href="/assets/js/233.ebc2c0f7.js"><link rel="prefetch" href="/assets/js/234.5733d91a.js"><link rel="prefetch" href="/assets/js/235.70caabf7.js"><link rel="prefetch" href="/assets/js/236.93ab3ef2.js"><link rel="prefetch" href="/assets/js/237.4bbc7fec.js"><link rel="prefetch" href="/assets/js/238.0ac26058.js"><link rel="prefetch" href="/assets/js/239.74667e7b.js"><link rel="prefetch" href="/assets/js/24.0a175b16.js"><link rel="prefetch" href="/assets/js/240.0766d33e.js"><link rel="prefetch" href="/assets/js/241.a9ae85d2.js"><link rel="prefetch" href="/assets/js/242.1e035e1a.js"><link rel="prefetch" href="/assets/js/243.22d6f4cb.js"><link rel="prefetch" href="/assets/js/244.7e15f14c.js"><link rel="prefetch" href="/assets/js/245.412724e1.js"><link rel="prefetch" href="/assets/js/246.257f40ca.js"><link rel="prefetch" href="/assets/js/247.169e6312.js"><link rel="prefetch" href="/assets/js/248.24a2f98c.js"><link rel="prefetch" href="/assets/js/249.661083f7.js"><link rel="prefetch" href="/assets/js/25.91c3ff9b.js"><link rel="prefetch" href="/assets/js/250.0df7e303.js"><link rel="prefetch" href="/assets/js/251.74f20e6b.js"><link rel="prefetch" href="/assets/js/252.05f48052.js"><link rel="prefetch" href="/assets/js/253.df587d36.js"><link rel="prefetch" href="/assets/js/254.b355ea02.js"><link rel="prefetch" href="/assets/js/255.88f3aa61.js"><link rel="prefetch" href="/assets/js/256.295f92c9.js"><link rel="prefetch" href="/assets/js/257.abf5ddf0.js"><link rel="prefetch" href="/assets/js/258.07d15c8c.js"><link rel="prefetch" href="/assets/js/259.15cfc3dd.js"><link rel="prefetch" href="/assets/js/26.718566b0.js"><link rel="prefetch" href="/assets/js/260.615ea9f8.js"><link rel="prefetch" href="/assets/js/261.fabc216c.js"><link rel="prefetch" href="/assets/js/262.74b06e19.js"><link rel="prefetch" href="/assets/js/263.681b17ad.js"><link rel="prefetch" href="/assets/js/264.aca11b7b.js"><link rel="prefetch" href="/assets/js/265.c559a502.js"><link rel="prefetch" href="/assets/js/266.dbaec7b3.js"><link rel="prefetch" href="/assets/js/267.4db511f7.js"><link rel="prefetch" href="/assets/js/268.b1daa6c6.js"><link rel="prefetch" href="/assets/js/269.fd562123.js"><link rel="prefetch" href="/assets/js/27.f5ff1aff.js"><link rel="prefetch" href="/assets/js/270.77a04cc9.js"><link rel="prefetch" href="/assets/js/271.fa720be8.js"><link rel="prefetch" href="/assets/js/272.28c13501.js"><link rel="prefetch" href="/assets/js/273.f1e292fe.js"><link rel="prefetch" href="/assets/js/274.819f5417.js"><link rel="prefetch" href="/assets/js/275.ad0bf385.js"><link rel="prefetch" href="/assets/js/276.337f772a.js"><link rel="prefetch" href="/assets/js/277.4e797380.js"><link rel="prefetch" href="/assets/js/278.85c5558e.js"><link rel="prefetch" href="/assets/js/279.5a88275c.js"><link rel="prefetch" href="/assets/js/28.dfaf7f65.js"><link rel="prefetch" href="/assets/js/280.0599a363.js"><link rel="prefetch" href="/assets/js/281.b1563aa6.js"><link rel="prefetch" href="/assets/js/282.9862b3ea.js"><link rel="prefetch" href="/assets/js/283.43d1c4ba.js"><link rel="prefetch" href="/assets/js/284.bd819190.js"><link rel="prefetch" href="/assets/js/285.c938d92b.js"><link rel="prefetch" href="/assets/js/286.7a7d8cfe.js"><link rel="prefetch" href="/assets/js/287.1469e363.js"><link rel="prefetch" href="/assets/js/288.87550de3.js"><link rel="prefetch" href="/assets/js/289.bd91d3f0.js"><link rel="prefetch" href="/assets/js/29.5f230ec4.js"><link rel="prefetch" href="/assets/js/290.0a2de999.js"><link rel="prefetch" href="/assets/js/291.6379036a.js"><link rel="prefetch" href="/assets/js/292.10314ad5.js"><link rel="prefetch" href="/assets/js/293.39245c0c.js"><link rel="prefetch" href="/assets/js/294.7231017c.js"><link rel="prefetch" href="/assets/js/295.b92e72cd.js"><link rel="prefetch" href="/assets/js/296.bc54fdd6.js"><link rel="prefetch" href="/assets/js/297.267c1e2b.js"><link rel="prefetch" href="/assets/js/298.44020fbb.js"><link rel="prefetch" href="/assets/js/299.b5fcf3e8.js"><link rel="prefetch" href="/assets/js/30.95003315.js"><link rel="prefetch" href="/assets/js/300.750229dc.js"><link rel="prefetch" href="/assets/js/301.826e753e.js"><link rel="prefetch" href="/assets/js/302.402e4001.js"><link rel="prefetch" href="/assets/js/303.9c3f235d.js"><link rel="prefetch" href="/assets/js/304.82a0f98d.js"><link rel="prefetch" href="/assets/js/305.91b2ec7d.js"><link rel="prefetch" href="/assets/js/306.5df1bce2.js"><link rel="prefetch" href="/assets/js/307.31e23dd9.js"><link rel="prefetch" href="/assets/js/31.588a157c.js"><link rel="prefetch" href="/assets/js/32.6185dc8a.js"><link rel="prefetch" href="/assets/js/33.517a2b5a.js"><link rel="prefetch" href="/assets/js/34.126ed674.js"><link rel="prefetch" href="/assets/js/35.220e8fbf.js"><link rel="prefetch" href="/assets/js/36.16e271aa.js"><link rel="prefetch" href="/assets/js/37.c3a97e25.js"><link rel="prefetch" href="/assets/js/38.7887d085.js"><link rel="prefetch" href="/assets/js/39.ad1e778e.js"><link rel="prefetch" href="/assets/js/4.8c295610.js"><link rel="prefetch" href="/assets/js/40.69a11ac2.js"><link rel="prefetch" href="/assets/js/41.5b25f3ef.js"><link rel="prefetch" href="/assets/js/42.3f68f5b2.js"><link rel="prefetch" href="/assets/js/43.efb126b0.js"><link rel="prefetch" href="/assets/js/44.c41408f4.js"><link rel="prefetch" href="/assets/js/45.9c53eb14.js"><link rel="prefetch" href="/assets/js/46.2adc062d.js"><link rel="prefetch" href="/assets/js/47.e1409ea6.js"><link rel="prefetch" href="/assets/js/48.511772b0.js"><link rel="prefetch" href="/assets/js/49.3098efef.js"><link rel="prefetch" href="/assets/js/5.b7ca092f.js"><link rel="prefetch" href="/assets/js/50.7a1b7ec2.js"><link rel="prefetch" href="/assets/js/51.7e63e1a6.js"><link rel="prefetch" href="/assets/js/52.fb6816f8.js"><link rel="prefetch" href="/assets/js/53.46933a63.js"><link rel="prefetch" href="/assets/js/54.37e29ba6.js"><link rel="prefetch" href="/assets/js/55.65538e1e.js"><link rel="prefetch" href="/assets/js/56.65cc1c52.js"><link rel="prefetch" href="/assets/js/57.ec1b003a.js"><link rel="prefetch" href="/assets/js/58.d87457b0.js"><link rel="prefetch" href="/assets/js/59.e9c90f5c.js"><link rel="prefetch" href="/assets/js/60.9e6bbd74.js"><link rel="prefetch" href="/assets/js/61.3a3fc9fb.js"><link rel="prefetch" href="/assets/js/63.f0b15fe8.js"><link rel="prefetch" href="/assets/js/64.5c1fb66e.js"><link rel="prefetch" href="/assets/js/65.733fecc1.js"><link rel="prefetch" href="/assets/js/66.edf16f69.js"><link rel="prefetch" href="/assets/js/67.a69de619.js"><link rel="prefetch" href="/assets/js/68.dd4f7f19.js"><link rel="prefetch" href="/assets/js/69.629dc6d7.js"><link rel="prefetch" href="/assets/js/7.eed792ed.js"><link rel="prefetch" href="/assets/js/70.ef3e7df8.js"><link rel="prefetch" href="/assets/js/71.4a3f1328.js"><link rel="prefetch" href="/assets/js/72.11ee5290.js"><link rel="prefetch" href="/assets/js/73.695bc3ad.js"><link rel="prefetch" href="/assets/js/74.df944679.js"><link rel="prefetch" href="/assets/js/75.3ed83a99.js"><link rel="prefetch" href="/assets/js/76.d30b91b1.js"><link rel="prefetch" href="/assets/js/77.cdef2670.js"><link rel="prefetch" href="/assets/js/78.58b9aeb5.js"><link rel="prefetch" href="/assets/js/79.ba5e81eb.js"><link rel="prefetch" href="/assets/js/8.c22bf210.js"><link rel="prefetch" href="/assets/js/80.97aa50aa.js"><link rel="prefetch" href="/assets/js/81.b1a0d5b8.js"><link rel="prefetch" href="/assets/js/82.a274fe7e.js"><link rel="prefetch" href="/assets/js/83.4b62ddcf.js"><link rel="prefetch" href="/assets/js/84.8796ec98.js"><link rel="prefetch" href="/assets/js/85.1c2471be.js"><link rel="prefetch" href="/assets/js/86.63ce07a2.js"><link rel="prefetch" href="/assets/js/87.8d216c8a.js"><link rel="prefetch" href="/assets/js/88.d7f9d0a9.js"><link rel="prefetch" href="/assets/js/89.425c8c8b.js"><link rel="prefetch" href="/assets/js/9.64247494.js"><link rel="prefetch" href="/assets/js/90.d858f3bf.js"><link rel="prefetch" href="/assets/js/91.2420b77f.js"><link rel="prefetch" href="/assets/js/92.eadf42b9.js"><link rel="prefetch" href="/assets/js/93.4fd57e55.js"><link rel="prefetch" href="/assets/js/94.e3f05f37.js"><link rel="prefetch" href="/assets/js/95.ad9c1fe8.js"><link rel="prefetch" href="/assets/js/96.d7b520f1.js"><link rel="prefetch" href="/assets/js/97.c356276a.js"><link rel="prefetch" href="/assets/js/98.b3f7f328.js"><link rel="prefetch" href="/assets/js/99.d4af7ebb.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.0cbd6f70.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.89986362.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-blog__global-layout"><section id="header-wrapper"><header id="header"><div class="header-wrapper"><div class="title"><a href="/" class="nav-link home-link">Zemian's Blog </a></div> <div class="header-right-wrap"><ul class="nav"><li class="nav-item"><a href="/" class="nav-link">Blog</a></li><li class="nav-item"><a href="/tag/" class="nav-link">Tags</a></li><li class="nav-item"><a href="/about.html" class="nav-link">About</a></li></ul> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></div></header></section> <div id="mobile-header"><div class="mobile-header-bar"><div class="mobile-header-title"><a href="/" class="nav-link mobile-home-link">Zemian's Blog </a> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div> <div class="mobile-menu-wrapper"><hr class="menu-divider"> <ul class="mobile-nav"><li class="mobile-nav-item"><a href="/" class="nav-link">Blog</a></li><li class="mobile-nav-item"><a href="/tag/" class="nav-link">Tags</a></li><li class="mobile-nav-item"><a href="/about.html" class="nav-link">About</a></li> <li class="mobile-nav-item"><!----></li></ul></div></div></div> <div class="content-wrapper"><div id="vuepress-theme-blog__post-layout"><article itemscope="itemscope" itemtype="https://schema.org/BlogPosting" class="vuepress-blog-theme-content"><header><h1 itemprop="name headline" class="post-title">
+        How to write better POJO Services
+      </h1> <div class="post-meta"><!----> <div class="post-meta-date"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> <time pubdate itemprop="datePublished" datetime="2012-09-01T05:00:00.000Z">
+      Saturday, September 1, 2012
+    </time></div> <ul itemprop="keywords" class="post-meta-tags"><li class="post-tag" data-v-42ccfcd5><a href="/tag/java" data-v-42ccfcd5><span data-v-42ccfcd5>java</span></a></li></ul></div></header> <div itemprop="articleBody" class="content__default"><p>In Java, you can easily implement some business logic in Plain Old Java Object (POJO) classes, and then able to run them in a fancy
+server or framework without much hassle. There many server/frameworks, such as JBossAS, Spring or Camel etc, that
+would allow you to deploy POJO without even hardcoding to their API. Obviously you would get advance features if you willing to couple to
+their API specifics, but even if you do, you can keep these to minimal by encapsulating your own POJO and their API in a wrapper.
+By writing and designing your own application as simple POJO as possible, you will have the most flexible ways in choose a framework or server to
+deploy and run your application. One effective way to write your business logic in these environments is to use <em>Service</em> component.
+In this article I will share few things I learned in writing <em>Services</em>.</p> <h1 id="what-is-a-service"><a href="#what-is-a-service" class="header-anchor">#</a> What is a Service?</h1> <p>The word <em>Service</em> is overly used today, and it could mean many things to different people. When I say <em>Service</em>, my definition is a software
+component that has minimal of life-cycles such as <code>init</code>, <code>start</code>, <code>stop</code>, and <code>destroy</code>. You may not need all these
+stages of life-cycles in every service you write, but you can simply ignore ones that don't apply. When writing large application that
+intended for long running such as a server component, definining these life-cycles and ensure they are excuted in proper order is crucial!</p> <p>I will be walking you through a Java demo project that I have prepared. It's very basic and it should run as stand-alone. The only dependency it has is
+the <a href="http://www.slf4j.org" target="_blank" rel="noopener noreferrer">SLF4J<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> logger. If you don't know how to use logger, then simply replace them with <code>System.out.println</code>. However I would strongly
+encourage you to learn how to use logger effectively during application development though. Also if you want to try out the
+<a href="http://www.springsource.org/spring-framework" target="_blank" rel="noopener noreferrer">Spring<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> related demos, then obviously you would need their jars as well.</p> <h1 id="writing-basic-pojo-service"><a href="#writing-basic-pojo-service" class="header-anchor">#</a> Writing basic POJO service</h1> <p>You can quickly define a contract of a Service with life-cycles as below in an interface.</p> <div class="language- extra-class"><pre class="language-text"><code>    package servicedemo;
+    
+    public interface Service {
+        void init();
+        void start();
+        void stop();
+        void destroy();
+        boolean isInited();
+        boolean isStarted();
+    }
+</code></pre></div><p>Developers are free to do what they want in their Service implementation, but you might want to give them an adapter class so that
+they don't have to re-write same basic logic on each Service. I would provide an abstract service like this:</p> <div class="language- extra-class"><pre class="language-text"><code>    package servicedemo;
+    
+    import java.util.concurrent.atomic.*;
+    import org.slf4j.*;
+    public abstract class AbstractService implements Service {
+        protected Logger logger = LoggerFactory.getLogger(getClass());
+        protected AtomicBoolean started = new AtomicBoolean(false);
+        protected AtomicBoolean inited = new AtomicBoolean(false);
+    
+        public void init() {
+            if (!inited.get()) {
+                initService();
+                inited.set(true);
+                logger.debug(&quot;{} initialized.&quot;, this);
+            }
+        }
+    
+        public void start() {
+            // Init service if it has not done so.
+            if (!inited.get()) {
+                init();
+            }
+            // Start service now.
+            if (!started.get()) {
+                startService();
+                started.set(true);
+                logger.debug(&quot;{} started.&quot;, this);
+            }
+        }
+    
+        public void stop() {
+            if (started.get()) {
+                stopService();
+                started.set(false);
+                logger.debug(&quot;{} stopped.&quot;, this);
+            }
+        }
+    
+        public void destroy() {
+            // Stop service if it is still running.
+            if (started.get()) {
+                stop();
+            }
+            // Destroy service now.
+            if (inited.get()) {
+                destroyService();
+                inited.set(false);
+                logger.debug(&quot;{} destroyed.&quot;, this);
+            }
+        }
+    
+        public boolean isStarted() {
+            return started.get();
+        }
+    
+        public boolean isInited() {
+            return inited.get();
+        }
+    
+        @Override
+        public String toString() {
+                return getClass().getSimpleName() + &quot;[id=&quot; + System.identityHashCode(this) + &quot;]&quot;;
+        }
+    
+        protected void initService() {
+        }
+    
+        protected void startService() {
+        }
+    
+        protected void stopService() {
+        }
+    
+        protected void destroyService() {
+        }
+    }
+
+</code></pre></div><p>This abstract class provide the basic of most services needs. It has a logger and states to keep track of the life-cycles. It then delegate new
+sets of life-cycle methods so subclass can choose to override. Notice that the <code>start()</code> method is checking auto calling <code>init()</code> if it hasn't
+already done so. Same is done in <code>destroy()</code> method to the <code>stop()</code> method. This is important if we're to use it in a container that only have
+two stages life-cycles invocation. In this case, we can simply invoke <code>start()</code> and <code>destroy()</code> to match to our service's life-cycles.</p> <p>Some frameworks might go even further and create separate interfaces for each stage of the life-cycles, such as <code>InitableService</code> or
+<code>StartableService</code> etc. But I think that would be too much in a typical app. In most of the cases, you want something simple, so I like it just
+one interface. User may choose to ignore methods they don't want, or simply use an adaptor class.</p> <p>Before we end this section, I would throw in a silly Hello world service that can be used in our demo later.</p> <div class="language- extra-class"><pre class="language-text"><code>    package servicedemo;
+    
+    public class HelloService extends AbstractService {
+        public void initService() {
+            logger.info(this + &quot; inited.&quot;);
+        }
+        public void startService() {
+            logger.info(this + &quot; started.&quot;);
+        }
+        public void stopService() {
+            logger.info(this + &quot; stopped.&quot;);
+        }
+        public void destroyService() {
+            logger.info(this + &quot; destroyed.&quot;);
+        }
+    }
+</code></pre></div><h1 id="managing-multiple-pojo-services-with-a-container"><a href="#managing-multiple-pojo-services-with-a-container" class="header-anchor">#</a> Managing multiple POJO Services with a container</h1> <p>Now we have the basic of <em>Service</em> definition defined, your development team may start writing business logic code! Before long, you will have
+a library of your own services to re-use. To be able group and control these services into an effetive way, we want also provide a container
+to manage them. The idea is that we typically want to control and manage multiple services with a container as a group in a higher level. Here
+is a simple implementation for you to get started:</p> <div class="language- extra-class"><pre class="language-text"><code>    package servicedemo;
+    
+    import java.util.*;
+    public class ServiceContainer extends AbstractService {
+        private List&lt;Service&gt; services = new ArrayList&lt;Service&gt;();
+    
+        public void setServices(List&lt;Service&gt; services) {
+            this.services = services;
+        }
+        public void addService(Service service) {
+            this.services.add(service);
+        }
+    
+        public void initService() {
+            logger.debug(&quot;Initializing &quot; + this + &quot; with &quot; + services.size() + &quot; services.&quot;);
+            for (Service service : services) {
+                logger.debug(&quot;Initializing &quot; + service);
+                service.init();
+            }
+            logger.info(this + &quot; inited.&quot;);
+        }
+        public void startService() {
+                logger.debug(&quot;Starting &quot; + this + &quot; with &quot; + services.size() + &quot; services.&quot;);
+                for (Service service : services) {
+                    logger.debug(&quot;Starting &quot; + service);
+                    service.start();
+                }
+                logger.info(this + &quot; started.&quot;);
+        }
+        public void stopService() {
+                int size = services.size();
+                logger.debug(&quot;Stopping &quot; + this + &quot; with &quot; + size + &quot; services in reverse order.&quot;);
+                for (int i = size - 1; i &gt;= 0; i--) {
+                    Service service = services.get(i);
+                    logger.debug(&quot;Stopping &quot; + service);
+                    service.stop();
+                }
+                logger.info(this + &quot; stopped.&quot;);
+        }
+        public void destroyService() {
+                int size = services.size();
+                logger.debug(&quot;Destroying &quot; + this + &quot; with &quot; + size + &quot; services in reverse order.&quot;);
+                for (int i = size - 1; i &gt;= 0; i--) {
+                    Service service = services.get(i);
+                    logger.debug(&quot;Destroying &quot; + service);
+                    service.destroy();
+                }
+                logger.info(this + &quot; destroyed.&quot;);
+        }
+    }
+</code></pre></div><p>From above code, you will notice few important things:</p> <ol><li>We extends the AbstractService, so a container is a service itself.</li> <li>We would invoke all service's life-cycles before moving to next. No services will start unless all others are inited.</li> <li>We should stop and destroy services in reverse order for most general use cases.</li></ol> <p>The above container implementation is simple and run in synchronized fashion. This mean, you start container, then all services
+will start in order you added them. Stop should be same but in reverse order.</p> <p>I also hope you would able to see that there is plenty of room for you to improve this container as well. For example, you may
+add thread pool to control the execution of the services in asynchronized fashion.</p> <h1 id="running-pojo-services"><a href="#running-pojo-services" class="header-anchor">#</a> Running POJO Services</h1> <h2 id="running-services-with-a-simple-runner-program"><a href="#running-services-with-a-simple-runner-program" class="header-anchor">#</a> Running services with a simple runner program.</h2> <p>In the simplest form, we can run our POJO services on our own without any fancy server or frameworks. Java programs start its life from a
+static <code>main</code> method, so we surely can invoke <code>init</code> and <code>start</code> of our services in there. But we also need to address the <code>stop</code> and <code>destroy</code>
+life-cycles when user shuts down the program (usually by hitting <code>CTRL+C</code>.) For this, the Java has the <code>java.lang.Runtime#addShutdownHook()</code>
+facility. You can create a simple stand-alone server to bootstrap <em>Service</em> like this:</p> <div class="language- extra-class"><pre class="language-text"><code>    package servicedemo;
+    
+    import org.slf4j.*;
+    public class ServiceRunner {
+        private static Logger logger = LoggerFactory.getLogger(ServiceRunner.class);
+    
+        public static void main(String[] args) {
+            ServiceRunner main = new ServiceRunner();
+            main.run(args);
+        }
+    
+        public void run(String[] args) {
+            if (args.length &lt; 1)
+                throw new RuntimeException(&quot;Missing service class name as argument.&quot;);
+    
+            String serviceClassName = args[0];
+            try {
+                logger.debug(&quot;Creating &quot; + serviceClassName);
+                Class&lt;?&gt; serviceClass = Class.forName(serviceClassName);
+                if (!Service.class.isAssignableFrom(serviceClass)) {
+                    throw new RuntimeException(&quot;Service class &quot; + serviceClassName + &quot; did not implements &quot; + Service.class.getName());
+                }
+                Object serviceObject = serviceClass.newInstance();
+                Service service = (Service)serviceObject;
+    
+                registerShutdownHook(service);
+    
+                logger.debug(&quot;Starting service &quot; + service);
+                service.init();
+                service.start();
+                logger.info(service + &quot; started.&quot;);
+    
+                synchronized(this) {
+                    this.wait();
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(&quot;Failed to create and run &quot; + serviceClassName, e);
+            }
+        }
+    
+        private void registerShutdownHook(final Service service) {
+            Runtime.getRuntime().addShutdownHook(new Thread() {
+                public void run() {
+                    logger.debug(&quot;Stopping service &quot; + service);
+                    service.stop();
+                    service.destroy();
+                    logger.info(service + &quot; stopped.&quot;);
+                }
+            });
+        }
+    }
+</code></pre></div><p>With abover runner, you should able to run it with this command:</p> <div class="language- extra-class"><pre><code>$ java demo.ServiceRunner servicedemo.HelloService
+</code></pre></div><p>Look carefully, and you'll see that you have many options to run multiple services with above runner. Let me highlight couple:</p> <ol><li>Improve above runner directly and make all <code>args</code> for each new service class name, instead of just first element.</li> <li>Or write a <code>MultiLoaderService</code> that will load multiple services you want. You may control argument passing using System Properties.</li></ol> <p>Can you think of other ways to improve this runner?</p> <h2 id="running-services-with-spring"><a href="#running-services-with-spring" class="header-anchor">#</a> Running services with Spring</h2> <p>The Spring framework is an IoC container, and it's well known to be easy to work POJO, and Spring lets you wire your application
+together. This would be a perfect fit to use in our POJO services. However, with all the features Spring brings, it missed a easy
+to use, out of box <em>main</em> program to bootstrap spring config xml context files. But with what we built so far, this is actually an
+easy thing to do. Let's write one of our POJO <em>Service</em> to bootstrap a spring context file.</p> <div class="language- extra-class"><pre class="language-text"><code>    package servicedemo;
+    
+    import org.springframework.context.ConfigurableApplicationContext;
+    import org.springframework.context.support.FileSystemXmlApplicationContext;
+    
+    public class SpringService extends AbstractService {
+        private ConfigurableApplicationContext springContext;
+    
+        public void startService() {
+            String springConfig = System.getProperty(&quot;springContext&quot;, &quot;spring.xml);
+            springContext = new FileSystemXmlApplicationContext(springConfig);
+            logger.info(this + &quot; started.&quot;);
+        }
+        public void stopService() {
+            springContext.close();
+            logger.info(this + &quot; stopped.&quot;);
+        }
+    }
+</code></pre></div><p>With that simple <code>SpringService</code> you can run and load any spring xml file. For example try this:</p> <div class="language- extra-class"><pre><code>$ java -DspringContext=config/service-demo-spring.xml demo.ServiceRunner servicedemo.SpringService
+</code></pre></div><p>Inside the <code>config/service-demo-spring.xml</code> file, you can easily create our container that hosts one or more service in Spring beans.</p> <div class="language- extra-class"><pre class="language-text"><code>    &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+    
+        &lt;bean id=&quot;helloService&quot; class=&quot;servicedemo.HelloService&quot;&gt;
+        &lt;/bean&gt;
+    
+        &lt;bean id=&quot;serviceContainer&quot; class=&quot;servicedemo.ServiceContainer&quot; init-method=&quot;start&quot; destroy-method=&quot;destroy&quot;&gt;
+            &lt;property name=&quot;services&quot;&gt;
+                &lt;list&gt;
+                    &lt;ref bean=&quot;helloService&quot;/&gt;
+                &lt;/list&gt;
+            &lt;/property&gt;
+        &lt;/bean&gt;
+    
+    &lt;/beans&gt;
+</code></pre></div><p>Notice that I only need to setup <code>init-method</code> and <code>destroy-method</code> once on the <code>serviceContainer</code> bean. You can then add one or more
+other service such as the <code>helloService</code> as much as you want. They will all be started, managed, and then shutdown when you close the
+Spring context.</p> <p>Note that Spring context container did not explicitly have the same life-cycles as our services. The Spring context will automatically
+instanciate all your dependency beans, and then invoke all beans who's <code>init-method</code> is set. All that is done inside the constructor
+of <code>FileSystemXmlApplicationContext</code>. No explicit init method is called from user. However at the end, during stop of the service, Spring provide
+the <code>springContext#close()</code> to clean things up. Again, they do not differentiate <code>stop</code> from <code>destroy</code>. Because of this, we must merge our
+<code>init</code> and <code>start</code> into Spring's <code>init</code> state, and then merge <code>stop</code> and <code>destroy</code> into Spring's <code>close</code> state. Recall our
+<code>AbstractService#destory</code> will auto invoke <code>stop</code> if it hasn't already done so. So this is trick that we need to understand
+in order to use Spring effectively.</p> <h2 id="running-services-with-jee-app-server"><a href="#running-services-with-jee-app-server" class="header-anchor">#</a> Running services with JEE app server</h2> <p>In a corporate env, we usually do not have the freedom to run what we want as a stand-alone program. Instead they usually have some
+infrustructure and stricter standard technology stack in place already, such as using a JEE application server. In these situation, the most
+portable way to run POJO services is in a <code>war</code> web application. In a Servlet web application, you can write a class that implements
+<code>javax.servlet.ServletContextListener</code> and this will provide you the life-cycles hook via <code>contextInitialized</code> and <code>contextDestroyed</code>.
+In there, you can instanciate your <code>ServiceContainer</code> object and call <code>start</code> and <code>destroy</code> methods accordingly.</p> <p>Here is an example that you can explore:</p> <div class="language- extra-class"><pre class="language-text"><code>    package servicedemo;
+    import java.util.*;
+    import javax.servlet.*;
+    public class ServiceContainerListener implements ServletContextListener {
+        private static Logger logger = LoggerFactory.getLogger(ServiceContainerListener.class);
+        private ServiceContainer serviceContainer;
+    
+        public void contextInitialized(ServletContextEvent sce) {
+            serviceContainer = new ServiceContainer();
+            List&lt;Service&gt; services = createServices();
+            serviceContainer.setServices(services);
+            serviceContainer.start();
+            logger.info(serviceContainer + &quot; started in web application.&quot;);
+        }
+    
+        public void contextDestroyed(ServletContextEvent sce) {
+            serviceContainer.destroy();
+            logger.info(serviceContainer + &quot; destroyed in web application.&quot;);
+        }
+    
+        private List&lt;Service&gt; createServices() {
+            List&lt;Service&gt; result = new ArrayList&lt;Service&gt;();
+            // populate services here.
+            return result;
+        }
+    }
+</code></pre></div><p>You may configure above in the <code>WEB-INF/web.xml</code> like this:</p> <div class="language- extra-class"><pre class="language-text"><code>        &lt;listener&gt;
+            &lt;listener-class&gt;servicedemo.ServiceContainerListener&lt;/listener-class&gt;
+        &lt;/listener&gt;
+    
+    &lt;/web-app&gt;
+</code></pre></div><p>The demo provided a placeholder that you must add your services in code. But you can easily make that configurable using the <code>web.xml</code> for
+context parameters.</p> <p>If you were to use Spring inside a Servlet container, you may directly use their <code>org.springframework.web.context.ContextLoaderListener</code>
+class that does pretty much same as above, except they allow you to specify their xml configuration file using the
+<code>contextConfigLocation</code> context parameter. That's how a typical Spring MVC based application is configure. Once you have this setup, you
+can experiment our POJO service just as the Spring xml sample given above to test things out. You should see our service in action by
+your logger output.</p> <p>PS: Actually what we described here are simply related to Servlet web application, and not JEE specific. So you can use Tomcat server just
+fine as well.</p> <h1 id="the-importance-of-service-s-life-cycles-and-it-s-real-world-usage"><a href="#the-importance-of-service-s-life-cycles-and-it-s-real-world-usage" class="header-anchor">#</a> The importance of Service's life-cycles and it's real world usage</h1> <p>All the information I presented here are not novelty, nor a killer design pattern. In fact they have been used in many popular open source projects.
+However, in my past experience at work, folks always manage to make these extremely complicated, and worse case is that they completely disregard the
+importance of life-cycles when writing services. It's true that not everything you going to write needs to be fitted into a service, but if you find
+the need, please do pay attention to them, and take good care that they do invoked properly. The last thing you want is to exit JVM without clean up
+in services that you allocated precious resources for. These would become more disastrous if you allow your application to be dynamically reloaded during
+deployment without exiting JVM, in which will lead to system resources leakage.</p> <p>The above <em>Service</em> practice has been put into use in the <a href="https://bitbucket.org/timemachine/scheduler" target="_blank" rel="noopener noreferrer">TimeMachine<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> project. In fact, if you
+look at the <code>timemachine.scheduler.service.SchedulerEngine</code>, it would just be a container of many <a href="https://bitbucket.org/timemachine/scheduler/src/15f066cc6dad/timemachine-scheduler/src/main/java/timemachine/scheduler/service" target="_blank" rel="noopener noreferrer">services<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+running together. And that's how user can extend the scheduler functionalities as well, by writing a <em>Service</em>. You can load these services dynamically by a simple properties file.</p></div> <footer><!----> <hr> <!----></footer></article> <div class="sticker vuepress-toc"><div class="vuepress-toc-item vuepress-toc-h2 active"><a href="#running-services-with-a-simple-runner-program" title="Running services with a simple runner program.">Running services with a simple runner program.</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#running-services-with-spring" title="Running services with Spring">Running services with Spring</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#running-services-with-jee-app-server" title="Running services with JEE app server">Running services with JEE app server</a></div></div></div></div> <footer class="footer" data-v-3d9deeb8><div class="footer-left-wrap" data-v-3d9deeb8><ul class="contact" data-v-3d9deeb8><li class="contact-item" data-v-3d9deeb8><a href="https://github.com/zemian" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-3d9deeb8><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github" data-v-3d9deeb8><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" data-v-3d9deeb8></path></svg>
+          
+        </a></li></ul></div> <div class="footer-right-wrap" data-v-3d9deeb8><ul class="copyright" data-v-3d9deeb8><li class="copyright-item" data-v-3d9deeb8><a href="/about.html" class="nav-link" data-v-3d9deeb8>Copyright © 2011-present Zemian Deng</a></li></ul></div></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d0768de5.js" defer></script><script src="/assets/js/6.3d83d077.js" defer></script><script src="/assets/js/3.bf04938e.js" defer></script><script src="/assets/js/62.6d7351ab.js" defer></script>
+  </body>
+</html>

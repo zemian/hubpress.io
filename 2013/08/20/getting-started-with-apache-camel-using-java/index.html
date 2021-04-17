@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Getting started with Apache Camel using Java | Zemian&#39;s Blog</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="Apache Camel is a very useful library that helps you process events or messages
+from many different sources. You may move these messages through many different
+protocols such as between VM, HTTP, FTP, ...">
+    
+    <link rel="preload" href="/assets/css/0.styles.89986362.css" as="style"><link rel="preload" href="/assets/js/app.d0768de5.js" as="script"><link rel="preload" href="/assets/js/6.3d83d077.js" as="script"><link rel="preload" href="/assets/js/3.bf04938e.js" as="script"><link rel="preload" href="/assets/js/103.126eded0.js" as="script"><link rel="prefetch" href="/assets/js/10.0b5be35e.js"><link rel="prefetch" href="/assets/js/100.fc1682f8.js"><link rel="prefetch" href="/assets/js/101.3a69ca49.js"><link rel="prefetch" href="/assets/js/102.a198bbcb.js"><link rel="prefetch" href="/assets/js/104.6e4591c7.js"><link rel="prefetch" href="/assets/js/105.a09a9203.js"><link rel="prefetch" href="/assets/js/106.188001b0.js"><link rel="prefetch" href="/assets/js/107.4661f92e.js"><link rel="prefetch" href="/assets/js/108.fa87a28d.js"><link rel="prefetch" href="/assets/js/109.2688c3bc.js"><link rel="prefetch" href="/assets/js/11.5d912eaa.js"><link rel="prefetch" href="/assets/js/110.f3de5c1c.js"><link rel="prefetch" href="/assets/js/111.cbce13b6.js"><link rel="prefetch" href="/assets/js/112.7d0fbc41.js"><link rel="prefetch" href="/assets/js/113.45bee3c9.js"><link rel="prefetch" href="/assets/js/114.5685c9b0.js"><link rel="prefetch" href="/assets/js/115.43137d39.js"><link rel="prefetch" href="/assets/js/116.4310733a.js"><link rel="prefetch" href="/assets/js/117.70f1356e.js"><link rel="prefetch" href="/assets/js/118.0f6d6499.js"><link rel="prefetch" href="/assets/js/119.c4db4fe2.js"><link rel="prefetch" href="/assets/js/12.666bc5b1.js"><link rel="prefetch" href="/assets/js/120.894be9d3.js"><link rel="prefetch" href="/assets/js/121.84cea281.js"><link rel="prefetch" href="/assets/js/122.9dc6a33c.js"><link rel="prefetch" href="/assets/js/123.3912c7fb.js"><link rel="prefetch" href="/assets/js/124.fa5b79df.js"><link rel="prefetch" href="/assets/js/125.1643112e.js"><link rel="prefetch" href="/assets/js/126.2a34bf83.js"><link rel="prefetch" href="/assets/js/127.817312bd.js"><link rel="prefetch" href="/assets/js/128.b8791e8d.js"><link rel="prefetch" href="/assets/js/129.ee3ebdda.js"><link rel="prefetch" href="/assets/js/13.3f9b2a48.js"><link rel="prefetch" href="/assets/js/130.1aae2583.js"><link rel="prefetch" href="/assets/js/131.8af18e98.js"><link rel="prefetch" href="/assets/js/132.8dada434.js"><link rel="prefetch" href="/assets/js/133.7ace3794.js"><link rel="prefetch" href="/assets/js/134.94463269.js"><link rel="prefetch" href="/assets/js/135.6dd7630a.js"><link rel="prefetch" href="/assets/js/136.3281c4c6.js"><link rel="prefetch" href="/assets/js/137.b730d000.js"><link rel="prefetch" href="/assets/js/138.d14addb6.js"><link rel="prefetch" href="/assets/js/139.84e5c264.js"><link rel="prefetch" href="/assets/js/14.9e56c2c8.js"><link rel="prefetch" href="/assets/js/140.0330e840.js"><link rel="prefetch" href="/assets/js/141.06fb8ee1.js"><link rel="prefetch" href="/assets/js/142.455102e4.js"><link rel="prefetch" href="/assets/js/143.af58acb4.js"><link rel="prefetch" href="/assets/js/144.bde3d5aa.js"><link rel="prefetch" href="/assets/js/145.89e60e7e.js"><link rel="prefetch" href="/assets/js/146.42f98bfe.js"><link rel="prefetch" href="/assets/js/147.2bfc9157.js"><link rel="prefetch" href="/assets/js/148.304a6bd9.js"><link rel="prefetch" href="/assets/js/149.cd37bd10.js"><link rel="prefetch" href="/assets/js/15.18adc38e.js"><link rel="prefetch" href="/assets/js/150.d0b82a9d.js"><link rel="prefetch" href="/assets/js/151.eb504fe4.js"><link rel="prefetch" href="/assets/js/152.904a71fe.js"><link rel="prefetch" href="/assets/js/153.0c722c10.js"><link rel="prefetch" href="/assets/js/154.97188ee7.js"><link rel="prefetch" href="/assets/js/155.db1425ea.js"><link rel="prefetch" href="/assets/js/156.a2167ba9.js"><link rel="prefetch" href="/assets/js/157.48689b04.js"><link rel="prefetch" href="/assets/js/158.d2221b14.js"><link rel="prefetch" href="/assets/js/159.beb55d16.js"><link rel="prefetch" href="/assets/js/16.9af2362e.js"><link rel="prefetch" href="/assets/js/160.434260a9.js"><link rel="prefetch" href="/assets/js/161.092928d8.js"><link rel="prefetch" href="/assets/js/162.ac171b87.js"><link rel="prefetch" href="/assets/js/163.aed5fe24.js"><link rel="prefetch" href="/assets/js/164.ca54fee0.js"><link rel="prefetch" href="/assets/js/165.2471cbdf.js"><link rel="prefetch" href="/assets/js/166.e511d406.js"><link rel="prefetch" href="/assets/js/167.0b3dc2e0.js"><link rel="prefetch" href="/assets/js/168.36ab4f02.js"><link rel="prefetch" href="/assets/js/169.60c4127a.js"><link rel="prefetch" href="/assets/js/17.f132fdf8.js"><link rel="prefetch" href="/assets/js/170.b54dba09.js"><link rel="prefetch" href="/assets/js/171.8b2028f1.js"><link rel="prefetch" href="/assets/js/172.351b99e6.js"><link rel="prefetch" href="/assets/js/173.46509703.js"><link rel="prefetch" href="/assets/js/174.715a9a9b.js"><link rel="prefetch" href="/assets/js/175.c1d4128b.js"><link rel="prefetch" href="/assets/js/176.47189e66.js"><link rel="prefetch" href="/assets/js/177.34986abf.js"><link rel="prefetch" href="/assets/js/178.eb06e5b3.js"><link rel="prefetch" href="/assets/js/179.997fcb9d.js"><link rel="prefetch" href="/assets/js/18.abbf8b12.js"><link rel="prefetch" href="/assets/js/180.f5be1723.js"><link rel="prefetch" href="/assets/js/181.23f76fe5.js"><link rel="prefetch" href="/assets/js/182.8dcf41ce.js"><link rel="prefetch" href="/assets/js/183.7576f34f.js"><link rel="prefetch" href="/assets/js/184.9a85cd41.js"><link rel="prefetch" href="/assets/js/185.da2e1e11.js"><link rel="prefetch" href="/assets/js/186.96e14c0c.js"><link rel="prefetch" href="/assets/js/187.a7f1fd83.js"><link rel="prefetch" href="/assets/js/188.374ca74a.js"><link rel="prefetch" href="/assets/js/189.4e54c55d.js"><link rel="prefetch" href="/assets/js/19.ad6af1fb.js"><link rel="prefetch" href="/assets/js/190.66847246.js"><link rel="prefetch" href="/assets/js/191.07a7c0bb.js"><link rel="prefetch" href="/assets/js/192.7f74fd19.js"><link rel="prefetch" href="/assets/js/193.0500ff9e.js"><link rel="prefetch" href="/assets/js/194.d451365b.js"><link rel="prefetch" href="/assets/js/195.a0e34a35.js"><link rel="prefetch" href="/assets/js/196.d65d146f.js"><link rel="prefetch" href="/assets/js/197.58ad7a49.js"><link rel="prefetch" href="/assets/js/198.c6defcae.js"><link rel="prefetch" href="/assets/js/199.caf39db3.js"><link rel="prefetch" href="/assets/js/20.1c589aae.js"><link rel="prefetch" href="/assets/js/200.4ea4bd3c.js"><link rel="prefetch" href="/assets/js/201.1fc70d28.js"><link rel="prefetch" href="/assets/js/202.59b532b1.js"><link rel="prefetch" href="/assets/js/203.5497ed7f.js"><link rel="prefetch" href="/assets/js/204.ce3d2fca.js"><link rel="prefetch" href="/assets/js/205.777d666b.js"><link rel="prefetch" href="/assets/js/206.f0bd32de.js"><link rel="prefetch" href="/assets/js/207.55b4e54c.js"><link rel="prefetch" href="/assets/js/208.a77a414f.js"><link rel="prefetch" href="/assets/js/209.e9e0d12e.js"><link rel="prefetch" href="/assets/js/21.3991a2dc.js"><link rel="prefetch" href="/assets/js/210.278a6a5f.js"><link rel="prefetch" href="/assets/js/211.6f97b631.js"><link rel="prefetch" href="/assets/js/212.e02e98fc.js"><link rel="prefetch" href="/assets/js/213.3be2e1ae.js"><link rel="prefetch" href="/assets/js/214.a468e230.js"><link rel="prefetch" href="/assets/js/215.32d38fc9.js"><link rel="prefetch" href="/assets/js/216.8c245bde.js"><link rel="prefetch" href="/assets/js/217.994c54e5.js"><link rel="prefetch" href="/assets/js/218.090c9418.js"><link rel="prefetch" href="/assets/js/219.c547e1d0.js"><link rel="prefetch" href="/assets/js/22.b26ef736.js"><link rel="prefetch" href="/assets/js/220.fc52cdb8.js"><link rel="prefetch" href="/assets/js/221.5787451f.js"><link rel="prefetch" href="/assets/js/222.ba7d1230.js"><link rel="prefetch" href="/assets/js/223.eb8a1097.js"><link rel="prefetch" href="/assets/js/224.e4d611a1.js"><link rel="prefetch" href="/assets/js/225.c64a6af3.js"><link rel="prefetch" href="/assets/js/226.4710d884.js"><link rel="prefetch" href="/assets/js/227.4876c7c9.js"><link rel="prefetch" href="/assets/js/228.17697187.js"><link rel="prefetch" href="/assets/js/229.a21ccd95.js"><link rel="prefetch" href="/assets/js/23.c8df1771.js"><link rel="prefetch" href="/assets/js/230.98a097b5.js"><link rel="prefetch" href="/assets/js/231.294ff923.js"><link rel="prefetch" href="/assets/js/232.f646e6f7.js"><link rel="prefetch" href="/assets/js/233.ebc2c0f7.js"><link rel="prefetch" href="/assets/js/234.5733d91a.js"><link rel="prefetch" href="/assets/js/235.70caabf7.js"><link rel="prefetch" href="/assets/js/236.93ab3ef2.js"><link rel="prefetch" href="/assets/js/237.4bbc7fec.js"><link rel="prefetch" href="/assets/js/238.0ac26058.js"><link rel="prefetch" href="/assets/js/239.74667e7b.js"><link rel="prefetch" href="/assets/js/24.0a175b16.js"><link rel="prefetch" href="/assets/js/240.0766d33e.js"><link rel="prefetch" href="/assets/js/241.a9ae85d2.js"><link rel="prefetch" href="/assets/js/242.1e035e1a.js"><link rel="prefetch" href="/assets/js/243.22d6f4cb.js"><link rel="prefetch" href="/assets/js/244.7e15f14c.js"><link rel="prefetch" href="/assets/js/245.412724e1.js"><link rel="prefetch" href="/assets/js/246.257f40ca.js"><link rel="prefetch" href="/assets/js/247.169e6312.js"><link rel="prefetch" href="/assets/js/248.24a2f98c.js"><link rel="prefetch" href="/assets/js/249.661083f7.js"><link rel="prefetch" href="/assets/js/25.91c3ff9b.js"><link rel="prefetch" href="/assets/js/250.0df7e303.js"><link rel="prefetch" href="/assets/js/251.74f20e6b.js"><link rel="prefetch" href="/assets/js/252.05f48052.js"><link rel="prefetch" href="/assets/js/253.df587d36.js"><link rel="prefetch" href="/assets/js/254.b355ea02.js"><link rel="prefetch" href="/assets/js/255.88f3aa61.js"><link rel="prefetch" href="/assets/js/256.295f92c9.js"><link rel="prefetch" href="/assets/js/257.abf5ddf0.js"><link rel="prefetch" href="/assets/js/258.07d15c8c.js"><link rel="prefetch" href="/assets/js/259.15cfc3dd.js"><link rel="prefetch" href="/assets/js/26.718566b0.js"><link rel="prefetch" href="/assets/js/260.615ea9f8.js"><link rel="prefetch" href="/assets/js/261.fabc216c.js"><link rel="prefetch" href="/assets/js/262.74b06e19.js"><link rel="prefetch" href="/assets/js/263.681b17ad.js"><link rel="prefetch" href="/assets/js/264.aca11b7b.js"><link rel="prefetch" href="/assets/js/265.c559a502.js"><link rel="prefetch" href="/assets/js/266.dbaec7b3.js"><link rel="prefetch" href="/assets/js/267.4db511f7.js"><link rel="prefetch" href="/assets/js/268.b1daa6c6.js"><link rel="prefetch" href="/assets/js/269.fd562123.js"><link rel="prefetch" href="/assets/js/27.f5ff1aff.js"><link rel="prefetch" href="/assets/js/270.77a04cc9.js"><link rel="prefetch" href="/assets/js/271.fa720be8.js"><link rel="prefetch" href="/assets/js/272.28c13501.js"><link rel="prefetch" href="/assets/js/273.f1e292fe.js"><link rel="prefetch" href="/assets/js/274.819f5417.js"><link rel="prefetch" href="/assets/js/275.ad0bf385.js"><link rel="prefetch" href="/assets/js/276.337f772a.js"><link rel="prefetch" href="/assets/js/277.4e797380.js"><link rel="prefetch" href="/assets/js/278.85c5558e.js"><link rel="prefetch" href="/assets/js/279.5a88275c.js"><link rel="prefetch" href="/assets/js/28.dfaf7f65.js"><link rel="prefetch" href="/assets/js/280.0599a363.js"><link rel="prefetch" href="/assets/js/281.b1563aa6.js"><link rel="prefetch" href="/assets/js/282.9862b3ea.js"><link rel="prefetch" href="/assets/js/283.43d1c4ba.js"><link rel="prefetch" href="/assets/js/284.bd819190.js"><link rel="prefetch" href="/assets/js/285.c938d92b.js"><link rel="prefetch" href="/assets/js/286.7a7d8cfe.js"><link rel="prefetch" href="/assets/js/287.1469e363.js"><link rel="prefetch" href="/assets/js/288.87550de3.js"><link rel="prefetch" href="/assets/js/289.bd91d3f0.js"><link rel="prefetch" href="/assets/js/29.5f230ec4.js"><link rel="prefetch" href="/assets/js/290.0a2de999.js"><link rel="prefetch" href="/assets/js/291.6379036a.js"><link rel="prefetch" href="/assets/js/292.10314ad5.js"><link rel="prefetch" href="/assets/js/293.39245c0c.js"><link rel="prefetch" href="/assets/js/294.7231017c.js"><link rel="prefetch" href="/assets/js/295.b92e72cd.js"><link rel="prefetch" href="/assets/js/296.bc54fdd6.js"><link rel="prefetch" href="/assets/js/297.267c1e2b.js"><link rel="prefetch" href="/assets/js/298.44020fbb.js"><link rel="prefetch" href="/assets/js/299.b5fcf3e8.js"><link rel="prefetch" href="/assets/js/30.95003315.js"><link rel="prefetch" href="/assets/js/300.750229dc.js"><link rel="prefetch" href="/assets/js/301.826e753e.js"><link rel="prefetch" href="/assets/js/302.402e4001.js"><link rel="prefetch" href="/assets/js/303.9c3f235d.js"><link rel="prefetch" href="/assets/js/304.82a0f98d.js"><link rel="prefetch" href="/assets/js/305.91b2ec7d.js"><link rel="prefetch" href="/assets/js/306.5df1bce2.js"><link rel="prefetch" href="/assets/js/307.31e23dd9.js"><link rel="prefetch" href="/assets/js/31.588a157c.js"><link rel="prefetch" href="/assets/js/32.6185dc8a.js"><link rel="prefetch" href="/assets/js/33.517a2b5a.js"><link rel="prefetch" href="/assets/js/34.126ed674.js"><link rel="prefetch" href="/assets/js/35.220e8fbf.js"><link rel="prefetch" href="/assets/js/36.16e271aa.js"><link rel="prefetch" href="/assets/js/37.c3a97e25.js"><link rel="prefetch" href="/assets/js/38.7887d085.js"><link rel="prefetch" href="/assets/js/39.ad1e778e.js"><link rel="prefetch" href="/assets/js/4.8c295610.js"><link rel="prefetch" href="/assets/js/40.69a11ac2.js"><link rel="prefetch" href="/assets/js/41.5b25f3ef.js"><link rel="prefetch" href="/assets/js/42.3f68f5b2.js"><link rel="prefetch" href="/assets/js/43.efb126b0.js"><link rel="prefetch" href="/assets/js/44.c41408f4.js"><link rel="prefetch" href="/assets/js/45.9c53eb14.js"><link rel="prefetch" href="/assets/js/46.2adc062d.js"><link rel="prefetch" href="/assets/js/47.e1409ea6.js"><link rel="prefetch" href="/assets/js/48.511772b0.js"><link rel="prefetch" href="/assets/js/49.3098efef.js"><link rel="prefetch" href="/assets/js/5.b7ca092f.js"><link rel="prefetch" href="/assets/js/50.7a1b7ec2.js"><link rel="prefetch" href="/assets/js/51.7e63e1a6.js"><link rel="prefetch" href="/assets/js/52.fb6816f8.js"><link rel="prefetch" href="/assets/js/53.46933a63.js"><link rel="prefetch" href="/assets/js/54.37e29ba6.js"><link rel="prefetch" href="/assets/js/55.65538e1e.js"><link rel="prefetch" href="/assets/js/56.65cc1c52.js"><link rel="prefetch" href="/assets/js/57.ec1b003a.js"><link rel="prefetch" href="/assets/js/58.d87457b0.js"><link rel="prefetch" href="/assets/js/59.e9c90f5c.js"><link rel="prefetch" href="/assets/js/60.9e6bbd74.js"><link rel="prefetch" href="/assets/js/61.3a3fc9fb.js"><link rel="prefetch" href="/assets/js/62.6d7351ab.js"><link rel="prefetch" href="/assets/js/63.f0b15fe8.js"><link rel="prefetch" href="/assets/js/64.5c1fb66e.js"><link rel="prefetch" href="/assets/js/65.733fecc1.js"><link rel="prefetch" href="/assets/js/66.edf16f69.js"><link rel="prefetch" href="/assets/js/67.a69de619.js"><link rel="prefetch" href="/assets/js/68.dd4f7f19.js"><link rel="prefetch" href="/assets/js/69.629dc6d7.js"><link rel="prefetch" href="/assets/js/7.eed792ed.js"><link rel="prefetch" href="/assets/js/70.ef3e7df8.js"><link rel="prefetch" href="/assets/js/71.4a3f1328.js"><link rel="prefetch" href="/assets/js/72.11ee5290.js"><link rel="prefetch" href="/assets/js/73.695bc3ad.js"><link rel="prefetch" href="/assets/js/74.df944679.js"><link rel="prefetch" href="/assets/js/75.3ed83a99.js"><link rel="prefetch" href="/assets/js/76.d30b91b1.js"><link rel="prefetch" href="/assets/js/77.cdef2670.js"><link rel="prefetch" href="/assets/js/78.58b9aeb5.js"><link rel="prefetch" href="/assets/js/79.ba5e81eb.js"><link rel="prefetch" href="/assets/js/8.c22bf210.js"><link rel="prefetch" href="/assets/js/80.97aa50aa.js"><link rel="prefetch" href="/assets/js/81.b1a0d5b8.js"><link rel="prefetch" href="/assets/js/82.a274fe7e.js"><link rel="prefetch" href="/assets/js/83.4b62ddcf.js"><link rel="prefetch" href="/assets/js/84.8796ec98.js"><link rel="prefetch" href="/assets/js/85.1c2471be.js"><link rel="prefetch" href="/assets/js/86.63ce07a2.js"><link rel="prefetch" href="/assets/js/87.8d216c8a.js"><link rel="prefetch" href="/assets/js/88.d7f9d0a9.js"><link rel="prefetch" href="/assets/js/89.425c8c8b.js"><link rel="prefetch" href="/assets/js/9.64247494.js"><link rel="prefetch" href="/assets/js/90.d858f3bf.js"><link rel="prefetch" href="/assets/js/91.2420b77f.js"><link rel="prefetch" href="/assets/js/92.eadf42b9.js"><link rel="prefetch" href="/assets/js/93.4fd57e55.js"><link rel="prefetch" href="/assets/js/94.e3f05f37.js"><link rel="prefetch" href="/assets/js/95.ad9c1fe8.js"><link rel="prefetch" href="/assets/js/96.d7b520f1.js"><link rel="prefetch" href="/assets/js/97.c356276a.js"><link rel="prefetch" href="/assets/js/98.b3f7f328.js"><link rel="prefetch" href="/assets/js/99.d4af7ebb.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.0cbd6f70.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.89986362.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-blog__global-layout"><section id="header-wrapper"><header id="header"><div class="header-wrapper"><div class="title"><a href="/" class="nav-link home-link">Zemian's Blog </a></div> <div class="header-right-wrap"><ul class="nav"><li class="nav-item"><a href="/" class="nav-link">Blog</a></li><li class="nav-item"><a href="/tag/" class="nav-link">Tags</a></li><li class="nav-item"><a href="/about.html" class="nav-link">About</a></li></ul> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></div></header></section> <div id="mobile-header"><div class="mobile-header-bar"><div class="mobile-header-title"><a href="/" class="nav-link mobile-home-link">Zemian's Blog </a> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div> <div class="mobile-menu-wrapper"><hr class="menu-divider"> <ul class="mobile-nav"><li class="mobile-nav-item"><a href="/" class="nav-link">Blog</a></li><li class="mobile-nav-item"><a href="/tag/" class="nav-link">Tags</a></li><li class="mobile-nav-item"><a href="/about.html" class="nav-link">About</a></li> <li class="mobile-nav-item"><!----></li></ul></div></div></div> <div class="content-wrapper"><div id="vuepress-theme-blog__post-layout"><article itemscope="itemscope" itemtype="https://schema.org/BlogPosting" class="vuepress-blog-theme-content"><header><h1 itemprop="name headline" class="post-title">
+        Getting started with Apache Camel using Java
+      </h1> <div class="post-meta"><!----> <div class="post-meta-date"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> <time pubdate itemprop="datePublished" datetime="2013-08-20T05:00:00.000Z">
+      Tuesday, August 20, 2013
+    </time></div> <ul itemprop="keywords" class="post-meta-tags"><li class="post-tag" data-v-42ccfcd5><a href="/tag/camel" data-v-42ccfcd5><span data-v-42ccfcd5>camel</span></a></li></ul></div></header> <div itemprop="articleBody" class="content__default"><p>Apache Camel is a very useful library that helps you process events or messages
+from many different sources. You may move these messages through many different
+protocols such as between VM, HTTP, FTP, JMS, or even DIRECTORY/FILE, and yet
+still keep your processing code free of transport logic. This allows you to
+concentrate on digesting the content of the messages instead.</p> <p>Here I will provide a tutorial on how you can get started with Apache Camel using
+Java.</p> <p>Let’s start by creating a Maven project <code>pom.xml</code> file first.</p> <div class="language- extra-class"><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xsi:schemaLocation=&quot;
+        http://maven.apache.org/POM/4.0.0
+        http://maven.apache.org/maven-v4_0_0.xsd&quot;&gt;
+
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+    &lt;groupId&gt;camel-spring-demo&lt;/groupId&gt;
+    &lt;artifactId&gt;camel-spring-demo&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;packaging&gt;jar&lt;/packaging&gt;
+
+    &lt;properties&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+        &lt;camel.version&gt;2.11.1&lt;/camel.version&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.camel&lt;/groupId&gt;
+            &lt;artifactId&gt;camel-core&lt;/artifactId&gt;
+            &lt;version&gt;${camel.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+            &lt;artifactId&gt;slf4j-simple&lt;/artifactId&gt;
+            &lt;version&gt;1.7.5&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+&lt;/project&gt;
+</code></pre></div><p>We are only going to explore the <code>camel-core</code>, which actually contains quite of few useful
+components that you may use. Also for logging purpose, I have added a <code>slf4j-simple</code> as
+<a href="http://saltnlight5.blogspot.com/2013/08/how-to-configure-slf4j-with-different.html" target="_blank" rel="noopener noreferrer">a logger implementation<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+so we may see output on console.</p> <p>Next you just need a class to construct an <code>Route</code>. A <code>Route</code> is like a instruction
+definition to Camel on how to move your messages from one point to another. We are
+going to create <code>src/main/java/camelcoredemo/TimerRouteBuilder.java</code> file that
+will generate a timer message on every second, and then pass to a processor
+that simply logs it.</p> <div class="language- extra-class"><pre><code>package camelcoredemo;
+
+import org.slf4j.*;
+import org.apache.camel.*;
+import org.apache.camel.builder.*;
+
+public class TimerRouteBuilder extends RouteBuilder {
+    static Logger LOG = LoggerFactory.getLogger(TimerRouteBuilder.class);
+    public void configure() {
+        from(&quot;timer://timer1?period=1000&quot;)
+        .process(new Processor() {
+            public void process(Exchange msg) {
+                LOG.info(&quot;Processing {}&quot;, msg);
+            }
+        });
+    }
+}
+</code></pre></div><p>That’s all you needed to get started. Now you may build and run this simple
+demo.</p> <div class="language- extra-class"><pre><code>bash&gt; mvn compile
+bash&gt; mvn exec:java -Dexec.mainClass=org.apache.camel.main.Main -Dexec.args='-r camelcoredemo.TimerRouteBuilder'
+</code></pre></div><p>Notice that we didn’t even write a Java <strong>main</strong> class, but simply use the
+<code>org.apache.camel.main.Main</code> option to accepts a <code>RouteBuilder</code> class
+name as parameter. Then it will load and create the route automatically.</p> <h2 id="controlling-the-camelcontext"><a href="#controlling-the-camelcontext" class="header-anchor">#</a> Controlling the <code>CamelContext</code></h2> <p>When you start Camel, it creates a <code>CamelContext</code> object that holds
+many information on how to run it, including the definition of the
+<code>Route</code> we created. Now if you want to have more control over this
+<code>CamelContext</code>, then you would need to write your own <code>Main</code> class.
+I will show you a simple one here.</p> <div class="language- extra-class"><pre><code>package camelcoredemo;
+
+import org.slf4j.*;
+import org.apache.camel.*;
+import org.apache.camel.impl.*;
+import org.apache.camel.builder.*;
+
+public class TimerMain {
+    static Logger LOG = LoggerFactory.getLogger(TimerMain.class);
+    public static void main(String[] args) throws Exception {
+        new TimerMain().run();
+    }
+    void run() throws Exception {
+        final CamelContext camelContext = new DefaultCamelContext();
+        camelContext.addRoutes(createRouteBuilder());
+        camelContext.setTracing(true);
+        camelContext.start();
+
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+                try {
+                    camelContext.stop();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        waitForStop();
+    }
+    RouteBuilder createRouteBuilder() {
+        return new TimerRouteBuilder();
+    }
+    void waitForStop() {
+        while (true) {
+            try {
+                Thread.sleep(Long.MAX_VALUE);
+            } catch (InterruptedException e) {
+                break;
+            }
+        }
+    }
+}
+</code></pre></div><p>As you can see, we re-used the existing <code>TimerRouteBuilder</code> class inside
+<code>createRouteBuilder()</code> method. Our <code>Main</code> class now have full control
+when to create, start and stop the
+<a href="http://camel.apache.org/maven/current/camel-core/apidocs/org/apache/camel/CamelContext.html" target="_blank" rel="noopener noreferrer"><code>CamelContext</code><span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>.
+This context allow you to have control on how to configure Camel
+globally rather than on <code>Route</code> level. The javadoc link gives all the setter
+methods that you can explore on what it can do.</p> <p>Noticed that we also need to provide few setup codes in our <code>Main</code> class.
+First we need to handle graceful shutdown, so we added a Java shutdown hook
+to invoke the context <code>stop()</code>. Secondly we need to add a thread block after
+context has started. The reason for this is that the <code>CamelContext#start()</code>
+method is non-blocking! If you don’t block your <code>Main</code> thread after
+start, then it will simply exit right after it, which will have not
+much use. You want to run Camel as a service (like a server) until
+you explicitly press <code>CTRL+C</code> to terminate the process.</p> <h2 id="improving-the-main-class-to-start-camelcontext"><a href="#improving-the-main-class-to-start-camelcontext" class="header-anchor">#</a> Improving the <code>Main</code> class to start <code>CamelContext</code></h2> <p>If you don’t want to deal with much of the <code>Main</code> class setup
+code such as above, then you may simply extends the <code>org.apache.camel.main.Main</code>
+class provided by <code>camel-core</code> intead. By piggy-back on this class, you will
+only not have your Context auto setup, but you will get all the additional
+command line features such as controlling how long to run the
+process for, enabling tracing, loading custom route class etc.</p> <p>Refactoring previous example, here is how it look like.</p> <div class="language- extra-class"><pre><code>package camelcoredemo;
+
+import org.slf4j.*;
+import org.apache.camel.builder.*;
+import org.apache.camel.main.Main;
+
+public class TimerMain2 extends Main {
+    static Logger LOG = LoggerFactory.getLogger(TimerMain2.class);
+    public static void main(String[] args) throws Exception {
+        TimerMain2 main = new TimerMain2();
+        main.enableHangupSupport();
+        main.addRouteBuilder(createRouteBuilder());
+        main.run(args);
+    }
+    static RouteBuilder createRouteBuilder() {
+        return new TimerRouteBuilder();
+    }
+}
+</code></pre></div><p>Now our <code>TimerMain2</code> is much shorter, and you may try it out and it should
+function the same as before.</p> <div class="language- extra-class"><pre><code>bash&gt; mvn compile
+bash&gt; mvn exec:java -Dexec.mainClass=camelcoredemo.TimerMain2 -Dexec.args='-t'
+</code></pre></div><p>Notice that we have given <code>-t</code> option and it will dump <code>Route</code> tracing. Use <code>-h</code>
+and you will see all the available options.</p> <h2 id="adding-bean-to-the-camel-registry"><a href="#adding-bean-to-the-camel-registry" class="header-anchor">#</a> Adding bean to the Camel <code>Registry</code></h2> <p>In the <code>TimerRouteBuilder</code> example above, we have created a <code>Processor</code> on
+the fly. Now if you were to combine few different <code>Processor</code> together, it
+would be nicer to minimize the noise. Camel allow you to do this by registering
+processing beans in their registry space, and then you simply reference them in
+your route as <code>bean</code> component. Here is how I can convert above example into
+beans processing.</p> <div class="language- extra-class"><pre><code>package camelcoredemo;
+
+import org.slf4j.*;
+import org.apache.camel.*;
+import org.apache.camel.builder.*;
+import org.apache.camel.main.Main;
+
+public class TimerBeansMain extends Main {
+    static Logger LOG = LoggerFactory.getLogger(TimerBeansMain.class);
+    public static void main(String[] args) throws Exception {
+        TimerBeansMain main = new TimerBeansMain();
+        main.enableHangupSupport();
+        main.bind(&quot;processByBean1&quot;, new Bean1());
+        main.bind(&quot;processAgainByBean2&quot;, new Bean2());
+        main.addRouteBuilder(createRouteBuilder());
+        main.run(args);
+    }
+    static RouteBuilder createRouteBuilder() {
+        return new RouteBuilder() {
+                public void configure() {
+                    from(&quot;timer://timer1?period=1000&quot;)
+                    .to(&quot;bean:processByBean1&quot;)
+                    .to(&quot;bean:processAgainByBean2&quot;);
+                }
+            };
+    }
+
+    // Processor beans
+    static class Bean1 implements Processor {
+        public void process(Exchange msg) {
+            LOG.info(&quot;First process {}&quot;, msg);
+        }
+    }
+    static class Bean2 implements Processor {
+        public void process(Exchange msg) {
+            LOG.info(&quot;Second process {}&quot;, msg);
+        }
+    }
+}
+</code></pre></div><p>Now you see my <code>Route</code> is very slim and without noise clutter; and I have
+refactored my processing code into individual classes. This promotes better
+code management and testing as you write more complex <code>Route</code> to address
+business logic. It let you build LEGO like block of re-usable POJO beans.
+Besides just processing beans, Camel use this registry space for many other
+services as well. For example you may customize many other component endpoints
+with additional features and or configurations. Or thing such as thread
+pool strategy implementation replacement etc.</p> <p>The <code>Route</code> in example above is constructed using what’s called Java DSL.
+The route is very readable, and yet you’ll get full IDE support to browse all the methods available to use for your route.</p> <p>I hope this article has helped you jump start your Camel ride. Besides the
+<code>timer</code> component mentioned, the <code>camel-core</code> also comes with the following
+components out of it’s core jar.</p> <ul><li><p><a href="http://camel.apache.org/bean.html" target="_blank" rel="noopener noreferrer">bean component<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="http://camel.apache.org/browse.html" target="_blank" rel="noopener noreferrer">browse component<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="http://camel.apache.org/dataset.html" target="_blank" rel="noopener noreferrer">dataset component<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="http://camel.apache.org/direct.html" target="_blank" rel="noopener noreferrer">direct component<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="http://camel.apache.org/file.html" target="_blank" rel="noopener noreferrer">file component<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="http://camel.apache.org/log.html" target="_blank" rel="noopener noreferrer">log component<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="http://camel.apache.org/mock.html" target="_blank" rel="noopener noreferrer">mock component<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="http://camel.apache.org/properties.html" target="_blank" rel="noopener noreferrer">properties component<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="http://camel.apache.org/seda.html" target="_blank" rel="noopener noreferrer">seda component<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="http://camel.apache.org/test.html" target="_blank" rel="noopener noreferrer">test component<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="http://camel.apache.org/timer.html" target="_blank" rel="noopener noreferrer">timer component<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="http://camel.apache.org/stub.html" target="_blank" rel="noopener noreferrer">stub component<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="http://camel.apache.org/validation.html" target="_blank" rel="noopener noreferrer">validator component<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="http://camel.apache.org/vm.html" target="_blank" rel="noopener noreferrer">vm component<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="http://camel.apache.org/xslt.html" target="_blank" rel="noopener noreferrer">xslt component<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li></ul> <p>Have fun!</p></div> <footer><!----> <hr> <!----></footer></article> <div class="sticker vuepress-toc"><div class="vuepress-toc-item vuepress-toc-h2 active"><a href="#controlling-the-camelcontext" title="Controlling the CamelContext">Controlling the CamelContext</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#improving-the-main-class-to-start-camelcontext" title="Improving the Main class to start CamelContext">Improving the Main class to start CamelContext</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#adding-bean-to-the-camel-registry" title="Adding bean to the Camel Registry">Adding bean to the Camel Registry</a></div></div></div></div> <footer class="footer" data-v-3d9deeb8><div class="footer-left-wrap" data-v-3d9deeb8><ul class="contact" data-v-3d9deeb8><li class="contact-item" data-v-3d9deeb8><a href="https://github.com/zemian" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-3d9deeb8><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github" data-v-3d9deeb8><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" data-v-3d9deeb8></path></svg>
+          
+        </a></li></ul></div> <div class="footer-right-wrap" data-v-3d9deeb8><ul class="copyright" data-v-3d9deeb8><li class="copyright-item" data-v-3d9deeb8><a href="/about.html" class="nav-link" data-v-3d9deeb8>Copyright © 2011-present Zemian Deng</a></li></ul></div></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d0768de5.js" defer></script><script src="/assets/js/6.3d83d077.js" defer></script><script src="/assets/js/3.bf04938e.js" defer></script><script src="/assets/js/103.126eded0.js" defer></script>
+  </body>
+</html>
